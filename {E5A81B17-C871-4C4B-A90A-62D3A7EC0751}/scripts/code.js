@@ -161,10 +161,13 @@
 	};
 	CInterview.prototype.Show = function()
 	{
-		console.log("🚀 ~ file: code.js:163 ~ Show:")
+		console.log("🚀 ~ file: code.js:163 ~ Show:",this.m_arrQuestions[this.m_nIndex])
+		console.log("🚀 ~ file: code.js:163 ~ Show: index",this.m_nIndex)
+		console.log("🚀 ~ file: code.js:163 ~ Show:array",this.m_arrQuestions)
+
 		if (!this.m_arrQuestions[this.m_nIndex])
 		{
-			console.log("No questions found");
+			console.log("No questions found-----------------");
 			window.Asc.plugin.executeCommand("close", "")
 			return;
 		}
@@ -240,7 +243,9 @@
 		var _plugin = window.Asc.plugin;
 		if (_plugin.info.methodName == "GetAllContentControls")
 		{
-			console.log("🚀 ~ file: code.js:242 ~ GetAllContentControls:", returnValue)
+			let tttttt = returnValue;
+			console.log("🚀 ~ file: code.js:242 ~ GetAllContentControls:", JSON.stringify(returnValue));
+			console.log("🚀 ~ file: code.js:242 ~ GetAllContentControls:ttttt", JSON.stringify(tttttt));
 			if (undefined === returnValue.length || returnValue.length <= 0)
 			{
 				console.log("No questions found");
@@ -253,7 +258,8 @@
 				{
 					arrQuestions.push({String : returnValue[nIndex].Tag, FieldId : returnValue[nIndex].InternalId});
 				}
-				console.log("🚀 ~ file: code.js:252 ~ arrQuestions:", arrQuestions)
+				let temp = arrQuestions;
+				console.log("🚀 ~ file: code.js:252 ~ arrQuestions:", JSON.stringify(temp))
 
 				oInterview = new CInterview(arrQuestions, function(arrElements)
 				{
