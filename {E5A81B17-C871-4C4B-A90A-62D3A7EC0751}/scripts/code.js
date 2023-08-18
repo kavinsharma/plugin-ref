@@ -243,9 +243,7 @@
 		var _plugin = window.Asc.plugin;
 		if (_plugin.info.methodName == "GetAllContentControls")
 		{
-			let tttttt = returnValue;
 			console.log("🚀 ~ file: code.js:242 ~ GetAllContentControls:", JSON.stringify(returnValue));
-			console.log("🚀 ~ file: code.js:242 ~ GetAllContentControls:ttttt", JSON.stringify(tttttt));
 			if (undefined === returnValue.length || returnValue.length <= 0)
 			{
 				console.log("No questions found");
@@ -268,6 +266,7 @@
 					{
 						_replace.push(privateCreateScriptForUnlocking(arrElements[nIndex].FieldId));
 					}
+					console.log("🚀 ~ file: code.js:267 ~ _replace:", JSON.stringify(_replace))
 
 					window.Asc.plugin.executeMethod("InsertAndReplaceContentControls", [_replace]);
 					_Elements = arrElements;
@@ -290,7 +289,7 @@
 					var _obj = privateCreateScript(sAnswer, nFieldId);
 					_replace.push(_obj);
 				}
-				console.log("🚀 ~ file: code.js:278 ~ _replace:")
+				console.log("🚀 ~ file: code.js:278 ~ _replace:",JSON.stringify(_replace))
 
 				window.Asc.plugin.executeMethod("InsertAndReplaceContentControls", [_replace]);
 			}
