@@ -37,9 +37,7 @@
 			";
 
 		_script = _script.replaceAll("\r\n", "");
-		console.log("🚀 ~ file: code.js:40 ~ replaceAll:", replaceAll)
 		_script = _script.replaceAll("\n", "");
-		console.log("🚀 ~ file: code.js:41 ~ replaceAll:", replaceAll)
 		
 		var _scriptObject = {
 			"Props" : {

@@ -271,7 +271,7 @@
 		}
 		else if (_plugin.info.methodName == "InsertAndReplaceContentControls")
 		{
-			console.log("🚀 ~ file: code.js:273 ~ InsertAndReplaceContentControls:")
+			console.log("🚀 ~ file: code.js:273 ~ InsertAndReplaceContentControls:",returnValue)
 			if (0 === nState)
 			{
 				var _replace = [];
