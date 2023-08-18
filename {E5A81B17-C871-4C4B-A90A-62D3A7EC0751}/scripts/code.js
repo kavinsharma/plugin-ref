@@ -20,6 +20,7 @@
 	//custom class for creating interview
 	function CInterview(arrQuestions, fOnEnd)
 	{
+		console.log("🚀 ~ file: code.js:22 ~ CInterview:")
 		this.m_arrQuestions = [];
 		this.m_nIndex       = 0;
 		this.m_fOnEnd       = fOnEnd;
@@ -29,6 +30,7 @@
 	}
 	CInterview.prototype.private_Parse = function(arrQuestions)
 	{
+		console.log("🚀 ~ file: code.js:32 ~ private_Parse:")
 		var nQuestionIndex = 0;
 		for (var nIndex = 0, nCount = arrQuestions.length; nIndex < nCount; ++nIndex)
 		{
@@ -46,6 +48,7 @@
 					String  : arrSplit[1],
 					Answer  : ""
 				};
+				console.log("🚀 ~ file: code.js:46 ~ m_arrQuestions:",nIndex ,"dddd",this.m_arrQuestions)
 			}
 			else if ("d" === arrSplit[0])
 			{
@@ -61,6 +64,7 @@
 	};
 	CInterview.prototype.private_Init = function()
 	{
+		console.log("🚀 ~ file: code.js:66 ~ private_Init:")
 		document.getElementById("divSimpleQuestion").style.display = "none";
 		document.getElementById("divDropDownQuestion").style.display = "none";
 
@@ -77,6 +81,7 @@
 
 		document.getElementById("buttonNext").onclick = function()
 		{
+			console.log("🚀 ~ file: code.js:83 ~ buttonNext:")
 			oThis.private_ProcessAnswer();
 
 			if (oThis.m_nIndex === oThis.m_arrQuestions.length - 1)
@@ -93,6 +98,7 @@
 	};
 	CInterview.prototype.private_ShowSimple = function(sQuestion)
 	{
+		console.log("🚀 ~ file: code.js:100 ~ private_ShowSimple:")
 		document.getElementById("divSimpleQuestion").style.display   = "block";
 		document.getElementById("divDropDownQuestion").style.display = "none";
 
@@ -101,6 +107,7 @@
 	};
 	CInterview.prototype.private_ShowDropDown = function(sQuestion, arrItems)
 	{
+		console.log("🚀 ~ file: code.js:109 ~ private_ShowDropDown:")
 		document.getElementById("divSimpleQuestion").style.display   = "none";
 		document.getElementById("divDropDownQuestion").style.display = "block";
 
@@ -119,6 +126,7 @@
 	};
 	CInterview.prototype.private_UpdateButtons = function()
 	{
+		console.log("🚀 ~ file: code.js:128 ~ private_UpdateButtons:")
 		if (this.m_nIndex <= 0)
 			document.getElementById("buttonBack").style.display = "none";
 		else
@@ -131,6 +139,7 @@
 	};
 	CInterview.prototype.private_ProcessAnswer = function()
 	{
+		console.log("🚀 ~ file: code.js:141 ~ private_ProcessAnswer:")
 		if (!this.m_arrQuestions[this.m_nIndex])
 			return;
 
@@ -152,6 +161,7 @@
 	};
 	CInterview.prototype.Show = function()
 	{
+		console.log("🚀 ~ file: code.js:163 ~ Show:")
 		if (!this.m_arrQuestions[this.m_nIndex])
 		{
 			console.log("No questions found");
@@ -177,9 +187,10 @@
 	var _id = 0;
 	function privateCreateScript(Label, Id)
 	{
+		console.log("🚀 ~ file: code.js:189 ~ privateCreateScript:")
 		var _script = "\r\n\
-			var oDocument = Api.GetDocument();\r\n\
-			var oParagraph = Api.CreateParagraph();\r\n\
+		var oDocument = Api.GetDocument();\r\n\
+		var oParagraph = Api.CreateParagraph();\r\n\
 			var oRun = oParagraph.AddText(\'" + Label + "\');\r\n\
 			oDocument.InsertContent([oParagraph], true);\r\n\
 			";
@@ -202,6 +213,7 @@
 
 	function privateCreateScriptForUnlocking(Id)
 	{
+		console.log("🚀 ~ file: code.js:215 ~ privateCreateScriptForUnlocking:")
 		return {
 			"Props"  : {
 				"Lock"       : 3,
@@ -228,6 +240,7 @@
 		var _plugin = window.Asc.plugin;
 		if (_plugin.info.methodName == "GetAllContentControls")
 		{
+			console.log("🚀 ~ file: code.js:242 ~ GetAllContentControls:", returnValue)
 			if (undefined === returnValue.length || returnValue.length <= 0)
 			{
 				console.log("No questions found");
@@ -240,6 +253,7 @@
 				{
 					arrQuestions.push({String : returnValue[nIndex].Tag, FieldId : returnValue[nIndex].InternalId});
 				}
+				console.log("🚀 ~ file: code.js:252 ~ arrQuestions:", arrQuestions)
 
 				oInterview = new CInterview(arrQuestions, function(arrElements)
 				{
@@ -257,18 +271,20 @@
 		}
 		else if (_plugin.info.methodName == "InsertAndReplaceContentControls")
 		{
+			console.log("🚀 ~ file: code.js:273 ~ InsertAndReplaceContentControls:")
 			if (0 === nState)
 			{
 				var _replace = [];
-
+				
 				for (var nIndex = 0, nCount = _Elements.length; nIndex < nCount; ++nIndex)
 				{
 					var nFieldId = _Elements[nIndex].FieldId;
 					var sAnswer  = _Elements[nIndex].Answer;
-
+					
 					var _obj = privateCreateScript(sAnswer, nFieldId);
 					_replace.push(_obj);
 				}
+				console.log("🚀 ~ file: code.js:278 ~ _replace:")
 
 				window.Asc.plugin.executeMethod("InsertAndReplaceContentControls", [_replace]);
 			}
