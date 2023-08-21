@@ -163,7 +163,7 @@
 	{
 		console.log("🚀 ~ file: code.js:163 ~ Show:",this.m_arrQuestions[this.m_nIndex])
 		console.log("🚀 ~ file: code.js:163 ~ Show: index",this.m_nIndex)
-		console.log("🚀 ~ file: code.js:163 ~ Show:array",this.m_arrQuestions)
+		console.log("🚀 ~ file: code.js:163 ~ Show:array",JSON.stringify(this.m_arrQuestions))
 
 		if (!this.m_arrQuestions[this.m_nIndex])
 		{
@@ -276,7 +276,7 @@
 		}
 		else if (_plugin.info.methodName == "InsertAndReplaceContentControls")
 		{
-			console.log("🚀 ~ file: code.js:273 ~ InsertAndReplaceContentControls:",returnValue)
+			console.log("🚀 ~ file: code.js:273 ~ InsertAndReplaceContentControls:",JSON.stringify(returnValue))
 			if (0 === nState)
 			{
 				var _replace = [];
